@@ -1,5 +1,5 @@
 import XCTest
-import MBProgressHUD-LY
+import MBProgressHUD_LY
 
 class Tests: XCTestCase {
     

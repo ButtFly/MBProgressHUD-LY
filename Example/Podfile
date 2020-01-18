@@ -1,4 +1,6 @@
-use_frameworks!
+platform :ios, '10.0'
+
+use_modular_headers!
 
 target 'MBProgressHUD-LY_Example' do
   pod 'MBProgressHUD-LY', :path => '../'
