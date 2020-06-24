@@ -145,61 +145,115 @@ public extension UIViewController {
         }
     }
     
-    func ly_showLoadingHUD(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil) -> Void {
+    func ly_showLoadingHUD(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil, complete: ((_ weakSelf: UIViewController) -> Void)? = nil) -> Void {
         DispatchQueue.ly_mbph_runInMain {
             let view: UIView = inView ?? self.view
             self.lyHud.loadingHud(text: text)
             view.addSubview(self.lyHud)
             self.lyHud.show(animated: true, autoHideDelay: autoHideDelay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
-    func ly_showTextHub(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil) -> Void {
+    func ly_showTextHub(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil, complete: ((_ weakSelf: UIViewController) -> Void)? = nil) -> Void {
         DispatchQueue.ly_mbph_runInMain {
             let view: UIView = inView ?? self.view
             self.lyHud.textHud(text: text)
             view.addSubview(self.lyHud)
-            self.lyHud.progress = 0.5
             self.lyHud.show(animated: true, autoHideDelay: autoHideDelay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
-    func ly_showSuccessHud(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil) -> Void {
+    func ly_showSuccessHud(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil, complete: ((_ weakSelf: UIViewController) -> Void)? = nil) -> Void {
         DispatchQueue.ly_mbph_runInMain {
             let view: UIView = inView ?? self.view
             self.lyHud.successHud(text: text)
             view.addSubview(self.lyHud)
             self.lyHud.isUserInteractionEnabled = false
             self.lyHud.show(animated: true, autoHideDelay: autoHideDelay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
-    func ly_showFailureHud(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil) -> Void {
+    func ly_showFailureHud(text: String?, autoHideDelay: TimeInterval = 0, inView: UIView? = nil, complete: ((_ weakSelf: UIViewController) -> Void)? = nil) -> Void {
         DispatchQueue.ly_mbph_runInMain {
             let view: UIView = inView ?? self.view
             self.lyHud.failureHud(text: text)
             view.addSubview(self.lyHud)
             self.lyHud.show(animated: true, autoHideDelay: autoHideDelay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
-    func ly_hideHud(afterDelay delay: TimeInterval = 0) -> Void {
+    func ly_hideHud(afterDelay delay: TimeInterval = 0, complete: ((_ weakSelf: UIViewController) -> Void)? = nil) -> Void {
         DispatchQueue.ly_mbph_runInMain {
             self.lyHud.hide(animated: true, afterDelay: delay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
-    func ly_showProgressHud(progress:CGFloat, text:String?, style:Int = 1, autoHideDelay: TimeInterval = 0, inView: UIView? = nil)  {
+    func ly_showProgressHud(progress:CGFloat, text:String?, style:Int = 1, autoHideDelay: TimeInterval = 0, inView: UIView? = nil, complete: ((_ weakSelf: UIViewController) -> Void)? = nil)  {
         
         DispatchQueue.ly_mbph_runInMain {
             let view: UIView = inView ?? self.view
             self.lyHud.progressHud(proress: progress, text: text, style: style)
             view.addSubview(self.lyHud)
             self.lyHud.show(animated: true, autoHideDelay: autoHideDelay)
+            weak var weakSelf = self
+            self.lyHud.completionBlock = {
+                guard let weakSelf = weakSelf else { return }
+                let strongSelf = weakSelf
+                DispatchQueue.ly_mbph_runInMain {
+                    complete?(strongSelf)
+                }
+                strongSelf.lyHud.completionBlock = nil
+            }
         }
     }
     
     
 }
+
 
 
