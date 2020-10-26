@@ -10,23 +10,28 @@ import UIKit
 import MBProgressHUD_LY
 
 class ViewController: UIViewController {
+    
+    let hud = LYProgressHUD()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        ly_showTextHub(text: "has带回家卡号山东黄金卡上课讲得好奥斯卡觉得好阿萨德好看很快就撒电话就卡死")
+        self.view.addSubview(hud)
+        hud.show(animated: true)
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2) {
             DispatchQueue.main.async {
                 print("开始隐藏")
-                self.ly_hideHub()
+                self.hud.hide(animated: true)
             }
         }
         
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 4) {
             DispatchQueue.main.async {
                 print("显示成功")
-                self.ly_showSuccessHud(text: "加上大家啊三等奖")
+                self.view.addSubview(self.hud)
+                self.hud.successHud(text: "加上大家啊三等奖")
+                self.hud.show(animated: true)
             }
         }
         
@@ -47,7 +52,7 @@ class ViewController: UIViewController {
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 10) {
             DispatchQueue.main.async {
                 print("开始隐藏")
-                self.ly_hideHub()
+                self.ly_hideHud()
             }
         }
         

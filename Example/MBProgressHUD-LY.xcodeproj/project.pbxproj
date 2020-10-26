@@ -212,12 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = K64377832H;
+						DevelopmentTeam = DWKUG2PD45;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = K64377832H;
+						DevelopmentTeam = DWKUG2PD45;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -480,7 +480,7 @@
 			baseConfigurationReference = 9C695EE1A2E6972F5BAF235D /* Pods-MBProgressHUD-LY_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = K64377832H;
+				DEVELOPMENT_TEAM = DWKUG2PD45;
 				INFOPLIST_FILE = "MBProgressHUD-LY/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -496,7 +496,7 @@
 			baseConfigurationReference = D15AA4DF556A86804B44EA08 /* Pods-MBProgressHUD-LY_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = K64377832H;
+				DEVELOPMENT_TEAM = DWKUG2PD45;
 				INFOPLIST_FILE = "MBProgressHUD-LY/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -511,7 +511,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72F9EB0E8BDFA19B41D59BDD /* Pods-MBProgressHUD-LY_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = K64377832H;
+				DEVELOPMENT_TEAM = DWKUG2PD45;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -534,7 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58C738D61BCD41E213003335 /* Pods-MBProgressHUD-LY_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = K64377832H;
+				DEVELOPMENT_TEAM = DWKUG2PD45;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

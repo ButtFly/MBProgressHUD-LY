@@ -1,6 +1,6 @@
 {
   "name": "MBProgressHUD-LY",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "summary": "MBProgressHUD的封装，自用",
   "description": "MBProgressHUD的封装，自用，保存起来",
   "homepage": "https://github.com/ButtFly/MBProgressHUD-LY",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ButtFly/MBProgressHUD-LY.git",
-    "tag": "0.1.0"
+    "tag": "0.3.0"
   },
   "swift_versions": "5.0",
   "platforms": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "MBProgressHUD": [
-      "~> 1.2.0"
+
     ]
   },
   "swift_version": "5.0"

@@ -12,14 +12,19 @@ extension UIImage {
     
     fileprivate class func ly_inSelfBundleNamed(_ name: String) -> UIImage? {
 
-        if let path = Bundle.main.path(forResource: "MBProgressHUD_LY", ofType: "bundle") {
-            return UIImage(named: name, in: Bundle(path: path), compatibleWith: nil)
-        } else if let path = Bundle.main.path(forResource: "Frameworks/MBProgressHUD_LY.framework/MBProgressHUD_LY", ofType: "bundle") {
-            return UIImage(named: name, in: Bundle(path: path), compatibleWith: nil)
+        let frameworkBundle = Bundle(for: LYProgressHUD.self)
+        let bundle: Bundle
+        if let bundleUrl = frameworkBundle.url(forResource: "MBProgressHUD_LY", withExtension: "bundle") {
+            let currentBundel = Bundle(url: bundleUrl)
+            bundle = currentBundel ?? Bundle.main
         } else {
-            return UIImage(named: name)
+            bundle = Bundle.main
         }
-        
+        if #available(iOS 13.0, *) {
+            return UIImage(named: name, in: bundle, with: nil)
+        } else {
+            return UIImage(named: name, in: bundle, compatibleWith: nil)
+        }
     }
     
 }
@@ -27,23 +32,28 @@ extension UIImage {
 
 open class LYProgressHUD: MBProgressHUD {
     
-    //HUD的背景颜色
-    static var backgroudColor:UIColor = UIColor.black.withAlphaComponent(0.9)
-    //HUD的内容颜色
-    static var textColor:UIColor = .white
-    ///当HUD出现时，当前控制器是否停止继续响应
-    static var isStopUserInteractionEnabledWhenAppear:Bool = true
+    fileprivate let successImage: UIImage?
+    fileprivate let failureImage: UIImage?
+
+    
+    public init(successImage: UIImage? = nil, failureImage: UIImage? = nil) {
+        self.successImage = successImage
+        self.failureImage = failureImage
+        super.init(frame: UIScreen.main.bounds)
+        bezelView.style = .solidColor
+        backgroundColor = .clear
+        bezelView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        contentColor = .white
+        removeFromSuperViewOnHide = true
+        label.numberOfLines = 0
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     open func show(animated: Bool, autoHideDelay: TimeInterval) {
         show(animated: animated)
-        self.isUserInteractionEnabled = LYProgressHUD.isStopUserInteractionEnabledWhenAppear
-        backgroundColor = .clear
-        bezelView.backgroundColor = LYProgressHUD.backgroudColor
-        contentColor = LYProgressHUD.textColor
-        
-        removeFromSuperViewOnHide = true
-        label.numberOfLines = 0
-        
         if autoHideDelay > 0 {
             hide(animated: animated, afterDelay: autoHideDelay)
         }
@@ -69,7 +79,7 @@ open class LYProgressHUD: MBProgressHUD {
         mode = .customView
         customView = nil
         let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: 37, height: 37))
-        iv.image = UIImage.ly_inSelfBundleNamed("hud_success_bgi")
+        iv.image = successImage ?? UIImage.ly_inSelfBundleNamed("hud_success_bgi")
         customView = iv
         label.text = text
         
@@ -80,7 +90,7 @@ open class LYProgressHUD: MBProgressHUD {
         mode = .customView
         customView = nil
         let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: 37, height: 37))
-        iv.image = UIImage.ly_inSelfBundleNamed("hud_failure_bgi")
+        iv.image = failureImage ?? UIImage.ly_inSelfBundleNamed("hud_failure_bgi")
         customView = iv
         label.text = text
         
@@ -137,8 +147,7 @@ public extension UIViewController {
             if let hud = hud {
                 return hud
             } else {
-                let hud = LYProgressHUD(view: view)
-                hud.bezelView.style = .solidColor
+                let hud = LYProgressHUD()
                 objc_setAssociatedObject(self, pointer, hud, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return hud
             }
@@ -254,6 +263,7 @@ public extension UIViewController {
     
     
 }
+
 
 
 

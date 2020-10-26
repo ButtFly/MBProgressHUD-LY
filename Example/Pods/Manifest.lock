@@ -1,7 +1,7 @@
 PODS:
   - MBProgressHUD (1.2.0)
-  - MBProgressHUD-LY (0.1.0):
-    - MBProgressHUD (~> 1.2.0)
+  - MBProgressHUD-LY (0.3.0):
+    - MBProgressHUD
 
 DEPENDENCIES:
   - MBProgressHUD-LY (from `../`)
@@ -16,8 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MBProgressHUD-LY: 0a77837acffab2be31d75a4ada5c7da6703e1009
+  MBProgressHUD-LY: 7d9da375571e531096d3d77a0aceb6b98b031bfb
 
 PODFILE CHECKSUM: 16b618b95ba0aa7ecb3c87e373b21f46c60980c6
 
-COCOAPODS: 1.9.0.beta.2
+COCOAPODS: 1.10.0.rc.1
