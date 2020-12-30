@@ -32,8 +32,8 @@ extension UIImage {
 
 open class LYProgressHUD: MBProgressHUD {
     
-    fileprivate let successImage: UIImage?
-    fileprivate let failureImage: UIImage?
+    public var successImage: UIImage?
+    public var failureImage: UIImage?
 
     
     public init(successImage: UIImage? = nil, failureImage: UIImage? = nil) {

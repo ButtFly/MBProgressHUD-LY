@@ -11,27 +11,21 @@ import MBProgressHUD_LY
 
 class ViewController: UIViewController {
     
-    let hud = LYProgressHUD()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.addSubview(hud)
-        hud.show(animated: true)
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2) {
             DispatchQueue.main.async {
-                print("开始隐藏")
-                self.hud.hide(animated: true)
+                print("显示文字")
+                self.ly_showTextHub(text: "显示文字")
             }
         }
         
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 4) {
             DispatchQueue.main.async {
                 print("显示成功")
-                self.view.addSubview(self.hud)
-                self.hud.successHud(text: "加上大家啊三等奖")
-                self.hud.show(animated: true)
+                self.ly_showSuccessHud(text: nil)
             }
         }
         
@@ -55,7 +49,7 @@ class ViewController: UIViewController {
                 self.ly_hideHud()
             }
         }
-        
+                
     }
 
     override func didReceiveMemoryWarning() {
